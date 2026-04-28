@@ -1,0 +1,203 @@
+FAIL src/__tests__/AnalysisResults.test.js
+  ● AnalysisResults Component › displays empty state when no ideaId provided
+
+    expect(element).toBeEmptyDOMElement()
+
+    Received:
+      "<div class=\"analysis-loading\">Loading analysis results...</div>"
+
+      19 |     it('displays empty state when no ideaId provided', () => {
+      20 |         const { container } = render(<AnalysisResults ideaId={null} />);
+    > 21 |         expect(container).toBeEmptyDOMElement();
+         |                           ^
+      22 |     });
+      23 |
+      24 |     it('shows loading state initially', () => {
+
+      at Object.<anonymous> (src/__tests__/AnalysisResults.test.js:21:27)
+
+FAIL src/__tests__/App.test.js (6.833 s)
+  ● Console
+
+    console.log
+      Idea created: { id: 123 }
+
+      at handleSubmit (src/components/IdeaForm.js:32:15)
+
+    console.log
+      Analysis triggered for idea: 123
+
+      at handleIdeaSubmit (src/App.js:17:15)
+
+  ● App Component › shows AnalysisResults and triggers analysis on idea submission
+
+    Unable to find an element with the text: Loading analysis results.... This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    <body>
+      <div>
+        <div
+          class="App"
+        >
+          <header
+            class="app-header"
+          >
+            <h1>
+              🚀 AI Business Idea Validator
+            </h1>
+            <p>
+              Validate your business ideas using artificial intelligence
+            </p>
+          </header>
+          <main
+            class="app-main"
+          >
+            <section
+              class="form-section"
+            >
+              <form
+                class="idea-form"
+              >
+                <h2>
+                  Submit Your Business Idea
+                </h2>
+                <div
+                  class="form-group"
+                >
+                  <label>
+                    Business Idea Title *
+                  </label>
+                  <input
+                    name="title"
+                    placeholder="E.g., AI Email Manager"
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="form-group"
+                >
+                  <label>
+                    Description *
+                  </label>
+                  <textarea
+                    name="description"
+                    placeholder="Detailed description of your idea"
+                    required=""
+                    rows="4"
+                  />
+                </div>
+                <div
+                  class="form-group"
+                >
+                  <label>
+                    Problem Statement *
+                  </label>
+                  <textarea
+                    name="problem_statement"
+                    placeholder="What problem does this solve?"
+                    required=""
+                    rows="3"
+                  />
+                </div>
+                <div
+                  class="form-group"
+                >
+                  <label>
+                    Target Market *
+                  </label>
+                  <input
+                    name="target_market"
+                    placeholder="Who is your target customer?"
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="form-group"
+                >
+                  <label>
+                    Proposed Solution *
+                  </label>
+                  <textarea
+                    name="proposed_solution"
+                    placeholder="How will you solve this problem?"
+                    required=""
+                    rows="3"
+                  />
+                </div>
+                <div
+                  class="form-group"
+                >
+                  <label>
+                    Value Proposition *
+                  </label>
+                  <input
+                    name="value_proposition"
+                    placeholder="What unique value do you provide?"
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="form-group"
+                >
+                  <label>
+                    Business Model *
+                  </label>
+                  <input
+                    name="business_model"
+                    placeholder="E.g., Freemium SaaS, Subscription, Marketplace"
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <button
+                  type="submit"
+                >
+                  Submit Idea for Analysis
+                </button>
+              </form>
+            </section>
+            <section
+              class="results-section"
+            >
+              <div
+                class="analysis-error"
+              >
+                Analysis not yet available. Triggering analysis...
+              </div>
+            </section>
+          </main>
+          <footer
+            class="app-footer"
+          >
+            <p>
+              © 2026 AI Business Idea Validator. All rights reserved.
+            </p>
+          </footer>
+        </div>
+      </div>
+    </body>
+
+      69 |         });
+      70 |
+    > 71 |         expect(await screen.findByText('Loading analysis results...')).toBeInTheDocument();
+         |                             ^
+      72 |     });
+      73 | });
+      74 |
+
+      at waitForWrapper (node_modules/@testing-library/dom/dist/wait-for.js:163:27)
+      at findByText (node_modules/@testing-library/dom/dist/query-helpers.js:86:33)
+      at Object.<anonymous> (src/__tests__/App.test.js:71:29)
+
+Test Suites: 2 failed, 2 total
+Tests:       2 failed, 6 passed, 8 total
+Snapshots:   0 total
+Time:        11.054 s
+Ran all test suites matching /App.test.js|AnalysisResults.test.js/i.

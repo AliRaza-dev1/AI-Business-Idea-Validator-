@@ -81,6 +81,9 @@ alembic/versions/*.pyc
 # Docker
 .dockerignore
 
+# Vercel
+.vercel/
+
 # Generated files
 *.pid
 *.seed

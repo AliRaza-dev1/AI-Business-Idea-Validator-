@@ -31,6 +31,13 @@ class Settings(BaseSettings):
     openai_temperature: float = 0.7
     openai_max_tokens: int = 2000
     
+    # Google Gemini Settings
+    google_gemini_api_key: str = ""
+    gemini_model: str = "gemini-pro"
+    
+    # AI Provider Selection
+    ai_provider: str = "gemini"  # "gemini" or "openai"
+    
     # Logging
     log_level: str = "INFO"
     

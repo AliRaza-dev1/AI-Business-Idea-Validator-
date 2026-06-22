@@ -1,4 +1,4 @@
-from openai import OpenAI
+import google.generativeai as genai
 from app.core.config import settings
 import json
 import logging
@@ -6,37 +6,17 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class AIAnalysisService:
-    """Service for AI-powered analysis - uses Gemini or OpenAI based on config"""
+class GeminiAnalysisService:
+    """Service for AI-powered analysis using Google Gemini"""
     
     def __init__(self):
-        if settings.ai_provider == "gemini":
-            from app.services.gemini_service import GeminiAnalysisService
-            self.service = GeminiAnalysisService()
-        else:
-            self.service = OpenAIAnalysisService()
-    
-    def analyze_idea(self, idea_title: str, description: str, problem: str, 
-                    market: str, solution: str, value_prop: str, business_model: str) -> dict:
-        """Analyze business idea using configured AI provider"""
-        return self.service.analyze_idea(idea_title, description, problem, market, solution, value_prop, business_model)
-    
-    def generate_idea_recommendations(self, user_history: str) -> list:
-        """Generate idea recommendations using configured AI provider"""
-        return self.service.generate_idea_recommendations(user_history)
-
-
-class OpenAIAnalysisService:
-    """Service for AI-powered analysis using OpenAI"""
-    
-    def __init__(self):
-        self.client = OpenAI(api_key=settings.openai_api_key)
-        self.model = settings.openai_model
+        genai.configure(api_key=settings.google_gemini_api_key)
+        self.model = genai.GenerativeModel(settings.gemini_model)
     
     def analyze_idea(self, idea_title: str, description: str, problem: str, 
                     market: str, solution: str, value_prop: str, business_model: str) -> dict:
         """
-        Comprehensive analysis of a business idea using AI
+        Comprehensive analysis of a business idea using Gemini
         Returns a dictionary with all analysis metrics and insights
         """
         
@@ -95,7 +75,7 @@ Business Model: {business_model}
             }
         
         except Exception as e:
-            logger.error(f"Error in AI analysis: {str(e)}")
+            logger.error(f"Error in Gemini analysis: {str(e)}")
             raise
     
     def _analyze_market(self, idea_context: str) -> str:
@@ -114,7 +94,7 @@ Provide a detailed market analysis covering:
 
 Format your response as a clear, structured analysis in 200-300 words.
         """
-        return self._call_openai(prompt)
+        return self._call_gemini(prompt)
     
     def _analyze_feasibility(self, idea_context: str) -> str:
         """Analyze technical and operational feasibility"""
@@ -132,7 +112,7 @@ Provide a detailed feasibility assessment covering:
 
 Format your response as a clear, structured analysis in 200-300 words.
         """
-        return self._call_openai(prompt)
+        return self._call_gemini(prompt)
     
     def _analyze_financial(self, idea_context: str) -> str:
         """Analyze financial projections"""
@@ -150,7 +130,7 @@ Provide a detailed financial analysis covering:
 
 Format your response as a clear, structured analysis in 200-300 words with specific numbers/ranges where possible.
         """
-        return self._call_openai(prompt)
+        return self._call_gemini(prompt)
     
     def _analyze_risks(self, idea_context: str) -> str:
         """Assess risks and challenges"""
@@ -169,7 +149,7 @@ Provide a detailed risk assessment covering:
 
 Format your response as a clear, structured analysis in 200-300 words.
         """
-        return self._call_openai(prompt)
+        return self._call_gemini(prompt)
     
     def _analyze_competition(self, idea_context: str) -> str:
         """Analyze competitive landscape"""
@@ -187,7 +167,7 @@ Provide a detailed competitive analysis covering:
 
 Format your response as a clear, structured analysis in 200-300 words.
         """
-        return self._call_openai(prompt)
+        return self._call_gemini(prompt)
     
     def _calculate_scores(self, market: str, feasibility: str, financial: str, risk: str) -> dict:
         """Calculate numerical scores based on analyses"""
@@ -213,7 +193,7 @@ Please respond with ONLY a JSON object in this exact format:
 Calculate overall_score as the average of all four scores.
         """
         
-        response = self._call_openai(prompt)
+        response = self._call_gemini(prompt)
         try:
             scores = json.loads(response)
             scores["overall_score"] = (
@@ -251,9 +231,8 @@ For each recommendation provide:
 Format as JSON array.
         """
         
-        response = self._call_openai(prompt)
+        response = self._call_gemini(prompt)
         try:
-            # Extract JSON if embedded in text
             import re
             json_match = re.search(r'\[.*\]', response, re.DOTALL)
             if json_match:
@@ -275,7 +254,7 @@ Scores: {scores}
 
 Be specific and actionable. Keep response under 150 words.
         """
-        return self._call_openai(prompt)
+        return self._call_gemini(prompt)
     
     def _extract_weaknesses(self, idea_context: str, scores: dict) -> str:
         """Extract key weaknesses"""
@@ -288,7 +267,7 @@ Scores: {scores}
 
 Be specific and constructive. Keep response under 150 words.
         """
-        return self._call_openai(prompt)
+        return self._call_gemini(prompt)
     
     def generate_idea_recommendations(self, user_history: str) -> list:
         """Recommend new business ideas based on user's past ideas and analysis"""
@@ -306,7 +285,7 @@ Be specific and constructive. Keep response under 150 words.
         
         Format your response ONLY as a JSON array of objects with the keys 'title', 'description', and 'reason'.
         """
-        response = self._call_openai(prompt)
+        response = self._call_gemini(prompt)
         try:
             import re
             json_match = re.search(r'\[.*\]', response, re.DOTALL)
@@ -317,20 +296,11 @@ Be specific and constructive. Keep response under 150 words.
             logger.error(f"Failed to generate idea recommendations: {str(e)}")
             return []
 
-    def _call_openai(self, prompt: str) -> str:
-        """Call OpenAI API"""
+    def _call_gemini(self, prompt: str) -> str:
+        """Call Gemini API"""
         try:
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {"role": "system", "content": "You are an expert business analyst and consultant."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=settings.openai_temperature,
-                max_tokens=settings.openai_max_tokens
-            )
-            return response.choices[0].message.content
+            response = self.model.generate_content(prompt)
+            return response.text
         except Exception as e:
-            logger.error(f"OpenAI API error: {str(e)}")
+            logger.error(f"Gemini API error: {str(e)}")
             raise
-

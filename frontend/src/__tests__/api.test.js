@@ -1,4 +1,4 @@
-import api, { auth, ideas, analysis } from '../services/api';
+import api, { auth, ideas, analysis, reports, dashboard } from '../services/api';
 import MockAdapter from 'axios-mock-adapter';
 
 describe('API Services', () => {
@@ -102,6 +102,28 @@ describe('API Services', () => {
       const response = await analysis.getReport(1);
       expect(response.data).toHaveProperty('idea');
       expect(response.data).toHaveProperty('analysis');
+    });
+  });
+
+  describe('Reports Service', () => {
+    it('getPdfReport should send GET to /ideas/{id}/report/pdf', async () => {
+      mock.onGet('/ideas/1/report/pdf').reply(200, new Blob());
+      const response = await reports.getPdfReport(1);
+      expect(response.status).toEqual(200);
+    });
+
+    it('getJsonReport should send GET to /ideas/{id}/report/json', async () => {
+      mock.onGet('/ideas/1/report/json').reply(200, { id: 1 });
+      const response = await reports.getJsonReport(1);
+      expect(response.data.id).toEqual(1);
+    });
+  });
+
+  describe('Dashboard Service', () => {
+    it('getStats should send GET to /dashboard/stats', async () => {
+      mock.onGet('/dashboard/stats').reply(200, { total_ideas: 5 });
+      const response = await dashboard.getStats();
+      expect(response.data.total_ideas).toEqual(5);
     });
   });
 

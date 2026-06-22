@@ -1,0 +1,12 @@
+Business Model Canvas (BMC) Framework:
+Developed by Alexander Osterwalder, the Business Model Canvas is a strategic management template for developing new or documenting existing business models. It consists of 9 building blocks:
+1. Customer Segments: The different groups of people or organizations an enterprise aims to reach and serve (e.g. niche market, mass market, B2B, B2C).
+2. Value Propositions: The bundle of products and services that create value for a specific Customer Segment.
+3. Channels: How a company communicates with and reaches its Customer Segments to deliver its Value Proposition (e.g. direct, indirect, web, retail).
+4. Customer Relationships: The types of relationships a company establishes with specific Customer Segments (e.g. personal assistance, automated, self-service, communities).
+5. Revenue Streams: The cash a company generates from each Customer Segment (e.g. subscription fees, asset sale, usage fee, licensing).
+6. Key Resources: The assets required to offer and deliver the value proposition (e.g. physical, intellectual, human, financial).
+7. Key Activities: The most important actions a company must take to operate successfully (e.g. production, platform development, problem solving).
+8. Key Partners: The network of suppliers and partners that make the business model work (e.g. strategic alliances, joint ventures, buyer-supplier relationships).
+9. Cost Structure: All costs incurred to operate a business model (e.g. cost-driven vs value-driven, fixed costs, variable costs, economies of scale).
+Guidelines: Ensure all nine blocks are populated and aligned with each other. For example, revenue streams must map to willingness-to-pay from customer segments.

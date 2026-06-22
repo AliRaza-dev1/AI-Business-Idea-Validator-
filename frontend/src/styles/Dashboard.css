@@ -1,0 +1,339 @@
+/* Upgraded Dashboard.css */
+.dashboard-container {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  border: 1px solid #e2e8f0;
+}
+
+.dashboard-container h2 {
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  font-weight: 800;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #3b82f6;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* AI Highlight Cards */
+.dashboard-ai-summary {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.dashboard-ai-summary h3 {
+  margin: 0 0 1rem 0;
+  color: #0f172a;
+  font-size: 1.15rem;
+}
+
+.stat-card.highlight-rated {
+  border-left: 4px solid #16a34a;
+  background: #ffffff;
+  text-align: left;
+  padding: 1.25rem;
+}
+
+.stat-card.highlight-risky {
+  border-left: 4px solid #dc2626;
+  background: #ffffff;
+  text-align: left;
+  padding: 1.25rem;
+}
+
+.stat-label-large {
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value-text {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* Comparison Workspace */
+.comparison-workspace {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f0f7ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+}
+
+.comparison-workspace h3 {
+  margin: 0 0 0.5rem 0;
+  color: #1e3a8a;
+  font-size: 1.2rem;
+}
+
+.comparison-workspace p {
+  margin: 0 0 1.25rem 0;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.comparison-inputs {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 1.25rem;
+}
+
+.comparison-inputs .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.comparison-inputs label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.comparison-inputs select {
+  padding: 0.6rem;
+  border: 1px solid #93c5fd;
+  border-radius: 6px;
+  background: white;
+  color: #334155;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.compare-action-btn {
+  padding: 0.6rem 1.5rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+  height: 38px;
+}
+
+.compare-action-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.compare-error-msg {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+/* Comparison Report Panel */
+.comparison-results-panel {
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.comparison-results-panel h4 {
+  margin: 0 0 1.25rem 0;
+  color: #0f172a;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+}
+
+.compare-scores-row {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.compare-score-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 1rem;
+  border-radius: 6px;
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+}
+
+.compare-score-box .label {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.compare-score-box .val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.delta-box {
+  background: #f1f5f9;
+}
+.delta-positive { color: #16a34a !important; }
+.delta-negative { color: #dc2626 !important; }
+
+.compare-details p {
+  color: #334155;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.compare-lists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.compare-list-col {
+  padding: 1.25rem;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.compare-list-col h5 {
+  margin: 0 0 0.75rem 0;
+  color: #1e293b;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 0.25rem;
+}
+
+.compare-list-col ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.compare-list-col li {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #475569;
+  margin-bottom: 0.4rem;
+}
+
+/* Activity List */
+.recent-activity h3 {
+  color: #0f172a;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+}
+
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-title {
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.activity-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-pending { background-color: #fef3c7; color: #d97706; }
+.status-analyzing { background-color: #dbeafe; color: #2563eb; }
+.status-completed { background-color: #dcfce3; color: #16a34a; }
+.status-failed { background-color: #fee2e2; color: #dc2626; }
+
+.activity-date {
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+.dashboard-loading, .dashboard-error, .dashboard-empty {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  border: 1px solid #e2e8f0;
+}
+
+.dashboard-error {
+  color: #ef4444;
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+}

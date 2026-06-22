@@ -1,0 +1,8 @@
+Porter's Five Forces Framework:
+Developed by Michael E. Porter, this framework analyzes the competitive forces within an industry that shape every industry's profitability and attractiveness.
+1. Threat of New Entrants: How easy it is for new competitors to enter the market. Barriers to entry include economies of scale, brand loyalty, high initial capital requirements, access to distribution channels, or patent protections.
+2. Threat of Substitutes: The ease with which customers can switch to alternative products or services from outside the industry that meet the same needs (e.g. video conferencing instead of air travel).
+3. Bargaining Power of Buyers (Customers): The pressure customers can exert on a business to lower prices, improve quality, or add features. Higher power if buyers are few and concentrated, or if switching costs are low.
+4. Bargaining Power of Suppliers: The pressure suppliers can exert on a business to raise prices or lower quality. Higher power if there are few suppliers, no substitutes, or if the component is critical.
+5. Intensity of Competitive Rivalry: The level of active competition among existing firms in the market. Higher if there are many competitors, slow industry growth, or high exit barriers.
+Guidelines: Use these forces to evaluate industry attractiveness, determine positioning, and define defensibility barriers.

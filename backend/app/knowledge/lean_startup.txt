@@ -1,0 +1,7 @@
+Lean Startup Framework:
+The Lean Startup methodology, pioneered by Eric Ries, focuses on short development cycles, rapid MVP validation, customer development, and validated learning to reduce market risk.
+1. Build-Measure-Learn Loop: The core loop of Lean Startup. Build the simplest Minimum Viable Product (MVP) possible, measure customer responses, and learn whether to pivot (make a structural course correction) or persevere.
+2. MVP (Minimum Viable Product): A version of a new product which allows a team to collect the maximum amount of validated learning about customers with the least effort. Avoid over-engineering before market validation.
+3. Validated Learning: Backing up progress with empirical data from real customers (e.g. sign-ups, pre-orders, active usage) rather than vanity metrics.
+4. Pivoting: Changing a fundamental assumption about the product, customer segment, or engine of growth, based on validation results, to align closer to product-market fit.
+Guidelines: Recommend starting with a low-cost MVP (e.g. landing page, manual concierge service, simple prototype) to test the value proposition before committing capital.

@@ -1,0 +1,11 @@
+Competitive Analysis Guidelines:
+Competitive analysis assesses the relative strengths and weaknesses of current and potential competitors.
+1. Moats & Defensibility: Warren Buffett's concept of a competitive moat. Types of moats:
+   - Network Effects: Product becomes more valuable as more people use it (e.g. marketplace, social network).
+   - High Switching Costs: Costs (time, effort, money) for a customer to switch to a competitor.
+   - Cost Advantages: Proprietary processes, low-cost supply chains.
+   - Intellectual Property: Patents, unique algorithms, trade secrets.
+   - Brand Equity: Customer trust and recognition.
+2. Competitor Matrix: Mapping competitors on two axes (e.g. Price vs Quality, or Target Market vs Feature Completeness) to find white space.
+3. Fast-Follower vs First-Mover: Determine whether speed-to-market or execution/refinement of an existing product is the correct strategy.
+Guidelines: Identify the core defensibility channel of the business idea. Flag if it is a generic copy of existing incumbents without a structural moat.

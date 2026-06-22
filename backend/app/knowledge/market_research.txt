@@ -1,0 +1,9 @@
+Market Research Guidelines:
+Market research involves systematically gathering data about target markets, customers, and industry forces.
+1. TAM, SAM, SOM Sizing:
+   - Total Addressable Market (TAM): The total global demand for a product or service (e.g. all global coffee buyers, $100B).
+   - Serviceable Available Market (SAM): The portion of the market that fits the company's geographical and product/channel reach (e.g. coffee buyers in the US, $20B).
+   - Serviceable Obtainable Market (SOM): The target portion of the SAM that the company can realistically capture in its first 3-5 years (e.g. premium organic coffee buyers in urban US cities, $1B).
+2. Market entry strategies: Define whether the startup is entry-focused (cost-leader, niche differentiator, or platform network).
+3. Primary vs Secondary Data: Rely on actual customer feedback signals (pre-signups, interview quotes, letter of intent) rather than secondary market report assumptions.
+Guidelines: Ensure market estimates are based on clear unit calculations rather than just citing general industry reports.

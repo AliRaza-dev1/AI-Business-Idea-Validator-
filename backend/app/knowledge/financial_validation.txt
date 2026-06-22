@@ -1,0 +1,8 @@
+Financial Validation Principles:
+Financial validation ensures that the business model is structurally viable and profitable at scale.
+1. Unit Economics: The direct revenues and costs associated with a single unit of sale (e.g. one user, one transaction, one subscription).
+2. Gross Margins: Gross Profit / Revenue. High-margin businesses (SaaS: 70-90%) scale much faster than low-margin businesses (E-commerce: 20-40%, Hardware: 10-30%).
+3. CAC & LTV: Customer Acquisition Cost (CAC) vs Lifetime Value (LTV). Structurally, LTV should be at least 3x CAC. CAC Payback period should ideally be under 12 months.
+4. Burn Rate & Runway: Cash burn rate determines the cash runway (months of operations left). Startups should plan for at least 18-24 months of runway.
+5. Operating Leverage: The ratio of fixed costs to variable costs. High operating leverage means high initial fixed costs but very low incremental costs to serve new customers (SaaS).
+Guidelines: Model financial validation based on realistic unit economics and pricing strategies. Warn about ideas with low margins and high CAC.

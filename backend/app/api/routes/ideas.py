@@ -1,15 +1,20 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Request
 from sqlalchemy.orm import Session
 from app.db.database import get_db
 from app.models.models import Idea, User
 from app.schemas.schemas import IdeaCreate, IdeaUpdate, IdeaResponse
 from typing import List
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
+limiter = Limiter(key_func=get_remote_address)
 router = APIRouter()
 
 
 @router.post("/", response_model=IdeaResponse, status_code=status.HTTP_201_CREATED)
+@limiter.limit("100/minute")
 async def create_idea(
+    request: Request,
     idea_data: IdeaCreate,
     user_id: int = 1,  # Default to demo user=1 for testing
     db: Session = Depends(get_db)
@@ -51,6 +56,68 @@ async def create_idea(
     return new_idea
 
 
+@router.get("/", response_model=List[IdeaResponse])
+async def list_ideas(
+    user_id: int = None,
+    status: str = None,
+    search: str = None,
+    skip: int = 0,
+    limit: int = 10,
+    db: Session = Depends(get_db)
+):
+    """List ideas (optionally filtered by user, status, and search query)"""
+    
+    query = db.query(Idea)
+    
+    if user_id:
+        query = query.filter(Idea.user_id == user_id)
+        
+    if status:
+        query = query.filter(Idea.status == status)
+        
+    if search:
+        search_filter = f"%{search}%"
+        query = query.filter(
+            (Idea.title.ilike(search_filter)) | 
+            (Idea.description.ilike(search_filter))
+        )
+    
+    ideas = query.offset(skip).limit(limit).all()
+    return ideas
+
+
+# NOTE: This MUST be defined BEFORE /{idea_id} to avoid path parameter capture
+@router.get("/user/recommendations")
+async def get_idea_recommendations(
+    user_id: int = 1,
+    db: Session = Depends(get_db)
+):
+    """Advanced Recommendation Engine: Suggest new ideas based on past failures/successes"""
+    # Get user's past ideas with their scores
+    ideas = db.query(Idea).filter(Idea.user_id == user_id).all()
+    if not ideas:
+        return {"recommendations": []}
+        
+    history = []
+    for idea in ideas:
+        if idea.analysis_result:
+            history.append(f"- Idea: {idea.title}\n  Description: {idea.description}\n  Overall Score: {idea.analysis_result.overall_score}\n  Weaknesses: {idea.analysis_result.weaknesses}")
+        else:
+            history.append(f"- Idea: {idea.title}\n  Description: {idea.description}\n  Status: Not analyzed yet")
+            
+    history_text = "\n".join(history)
+    
+    try:
+        from app.services.ai_service import AIAnalysisService
+        ai_service = AIAnalysisService()
+        recommendations = ai_service.generate_idea_recommendations(history_text)
+    except Exception:
+        # Gracefully return empty recommendations if AI service is unavailable
+        recommendations = []
+    
+    return {"recommendations": recommendations}
+
+
 @router.get("/{idea_id}", response_model=IdeaResponse)
 async def get_idea(idea_id: int, db: Session = Depends(get_db)):
     """Get a specific idea"""
@@ -63,24 +130,6 @@ async def get_idea(idea_id: int, db: Session = Depends(get_db)):
         )
     
     return idea
-
-
-@router.get("/", response_model=List[IdeaResponse])
-async def list_ideas(
-    user_id: int = None,
-    skip: int = 0,
-    limit: int = 10,
-    db: Session = Depends(get_db)
-):
-    """List ideas (optionally filtered by user)"""
-    
-    query = db.query(Idea)
-    
-    if user_id:
-        query = query.filter(Idea.user_id == user_id)
-    
-    ideas = query.offset(skip).limit(limit).all()
-    return ideas
 
 
 @router.put("/{idea_id}", response_model=IdeaResponse)
@@ -135,3 +184,4 @@ async def delete_idea(idea_id: int, db: Session = Depends(get_db)):
     db.commit()
     
     return None
+

@@ -41,4 +41,3 @@ echo Frontend: http://localhost:3000
 echo ========================================
 echo.
 echo Press any key to continue...
-pause

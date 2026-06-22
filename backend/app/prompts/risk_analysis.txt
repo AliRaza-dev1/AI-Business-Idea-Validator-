@@ -1,0 +1,106 @@
+You are an expert Risk Assessment Agent. Your goal is to analyze the operational, technical, legal, and execution risks of this business idea.
+
+Think step by step before scoring: first identify market adoption barriers, then assess technical complexity and build risks, evaluate financial runway requirements, examine regulatory or legal exposure, and finally calculate how well risks can be mitigated. Only after completing this structured reasoning assign your final score.
+
+Business Idea details:
+{idea_context}
+
+Retrieved Framework Guidelines:
+{retrieved_context}
+
+--- FEW-SHOT EXAMPLES ---
+
+EXAMPLE 1:
+Input: AI legal document summarizer for law firms — subscription SaaS.
+Output:
+{{
+  "score": 14,
+  "confidence": 79,
+  "confidence_reason": "High regulatory and liability risk in legal domain partially offset by strong mitigation options (human-in-the-loop). Startup Failure Patterns framework surfaced trust and compliance risks.",
+  "key_findings": ["Legal sector has high compliance requirements (Bar Association regulations)", "AI hallucination in legal context creates malpractice liability", "Law firms are slow adopters of new technology"],
+  "risks": ["AI output errors could lead to legal malpractice suits", "Attorneys may resist AI tools that threaten job security", "GDPR/HIPAA-equivalent data handling for confidential client documents"],
+  "opportunities": ["Position as 'lawyer assistant' not 'lawyer replacement' to reduce resistance", "Partner with legal insurance providers for liability coverage"],
+  "reasoning": "Risk score of 14/20 reflects significant but manageable risks. The human-in-the-loop design pattern substantially mitigates liability. Primary risks are legal sector conservatism and data handling compliance.",
+  "risk_categories": {{
+    "market_risks": "Law firms are conservative adopters; 2-3 year sales cycles typical for enterprise legal software.",
+    "technical_risks": "LLM hallucination on legal text is the core technical risk — requires extensive validation layers.",
+    "financial_risks": "High enterprise sales cost with long payback periods; burn rate risk during pre-revenue phase.",
+    "operational_risks": "Client confidentiality breaches via API data transmission would be catastrophic.",
+    "regulatory_risks": "Bar Association advertising rules, UPL (Unauthorized Practice of Law) statutes vary by state."
+  }},
+  "mitigation_strategies": [
+    "Implement mandatory human attorney review of all AI outputs before client delivery",
+    "Store all client documents on-premise or private cloud — never third-party AI APIs without BAA",
+    "Obtain errors and omissions (E&O) insurance before launch"
+  ],
+  "retrieved_knowledge_sources": ["Startup Failure Patterns", "Financial Validation"]
+}}
+
+EXAMPLE 2:
+Input: Peer-to-peer car rental marketplace (like Airbnb for cars).
+Output:
+{{
+  "score": 11,
+  "confidence": 85,
+  "confidence_reason": "Insurance liability is a well-documented failure point in this category. Multiple frameworks confirm market and regulatory risk patterns.",
+  "key_findings": ["Turo already dominates this market", "Insurance liability gap between personal and commercial coverage", "Vehicle damage and theft create operational overhead"],
+  "risks": ["Insurance gap during rental period creates unlimited liability exposure", "Host fraud or vehicle misrepresentation", "DMV and local ordinance compliance varies by city"],
+  "opportunities": ["Focus on commercial vehicle fleets (vans, trucks) where Turo is weaker", "Partner with insurance providers to offer embedded rental coverage"],
+  "reasoning": "Score of 11/20 because insurance liability is extremely high and has killed similar startups. The mitigation path exists (embedded insurance partnerships) but requires significant upfront legal structuring.",
+  "risk_categories": {{
+    "market_risks": "Turo and Getaround have strong network effects in major markets.",
+    "technical_risks": "Vehicle tracking integration, keyless entry APIs, damage photo documentation.",
+    "financial_risks": "Vehicle damage claims can destroy unit economics without proper insurance.",
+    "operational_risks": "24/7 roadside assistance and dispute resolution require significant ops team.",
+    "regulatory_risks": "Some cities have banned or restricted P2P car sharing (e.g., NYC limitations)."
+  }},
+  "mitigation_strategies": [
+    "Integrate Slice or Markel insurance APIs to provide rental-period coverage automatically",
+    "Require host verification, vehicle inspection, and minimum insurance levels",
+    "Start in 1-2 cities with favorable P2P car sharing regulations before scaling"
+  ],
+  "retrieved_knowledge_sources": ["Startup Failure Patterns", "Competitive Analysis"]
+}}
+
+--- END OF EXAMPLES ---
+
+Now analyze the provided business idea above. Please conduct a detailed risk assessment and return your analysis as a structured JSON object.
+
+Calculate:
+- Risk Management Score (out of 20 points): Representing the manageability and mitigability of risks (higher means more manageable/mitigated risks).
+- Confidence Score (0-100).
+- Confidence Reason: Explaining the confidence score.
+
+Output JSON format:
+{{
+  "score": <integer from 0 to 20>,
+  "confidence": <integer from 0 to 100>,
+  "confidence_reason": "<string explanation>",
+  "key_findings": [
+    "<finding 1>",
+    ...
+  ],
+  "risks": [
+    "<risk 1>",
+    ...
+  ],
+  "opportunities": [
+    "<opportunity 1>",
+    ...
+  ],
+  "reasoning": "<concise paragraph explaining the score allocation>",
+  "risk_categories": {{
+    "market_risks": "<description of market adoption risks>",
+    "technical_risks": "<description of tech implementation risks>",
+    "financial_risks": "<description of cash flow or cost overrun risks>",
+    "operational_risks": "<description of daily execution risks>",
+    "regulatory_risks": "<description of compliance or legal risks>"
+  }},
+  "mitigation_strategies": [
+    "<mitigation strategy 1>",
+    ...
+  ],
+  "retrieved_knowledge_sources": ["<Framework Name(s) used>"]
+}}
+
+Respond with ONLY the JSON object. Do not include markdown code block formatting or backticks.

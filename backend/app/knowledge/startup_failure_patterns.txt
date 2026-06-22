@@ -1,0 +1,9 @@
+Startup Failure Patterns:
+Based on historical research of failed startups, the main pitfalls leading to failure include:
+1. Building Something Nobody Wants (No Market Need): Startups fail because they build a product based on assumptions without validating customer demand or verifying the problem actually exists. (Responsible for 35%+ of failures).
+2. Running Out of Cash (Poor Cash Flow Management): Startups fail because their cash burn rate exceeds capital injection before they reach profitability or product-market fit.
+3. Wrong Team / Lack of Key Capabilities: Missing technical, product, or sales execution expertise.
+4. Outcompeted: Failing to build a sustainable competitive advantage or barrier to entry, allowing incumbents or fast-followers to capture the market.
+5. Pricing and Cost Issues: Product price is set too high or low relative to product costs and customer value. High CAC (Customer Acquisition Cost) vs Low LTV (Lifetime Value) models are structurally unsustainable (LTV should be > 3x CAC).
+6. Operational Complexity: Scale challenges, technical debt, or logistics failures that make unit economics break down.
+Guidelines: Review the business idea against these failure patterns. If the idea is complex, high cost, or unvalidated, explicitly flag these as critical failure risks.

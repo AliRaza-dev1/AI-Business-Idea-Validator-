@@ -270,6 +270,33 @@ Be specific and constructive. Keep response under 150 words.
         """
         return self._call_openai(prompt)
     
+    def generate_idea_recommendations(self, user_history: str) -> list:
+        """Recommend new business ideas based on user's past ideas and analysis"""
+        prompt = f"""
+        Based on the user's history of business ideas and their feedback/analysis:
+        
+        {user_history}
+        
+        Suggest 3 completely new, highly viable business ideas that align with their interests but avoid the pitfalls or weaknesses of their past ideas.
+        
+        For each idea provide:
+        - title: The name of the idea
+        - description: A short description
+        - reason: Why this is recommended based on their history
+        
+        Format your response ONLY as a JSON array of objects with the keys 'title', 'description', and 'reason'.
+        """
+        response = self._call_openai(prompt)
+        try:
+            import re
+            json_match = re.search(r'\[.*\]', response, re.DOTALL)
+            if json_match:
+                return json.loads(json_match.group())
+            return json.loads(response)
+        except Exception as e:
+            logger.error(f"Failed to generate idea recommendations: {str(e)}")
+            return []
+
     def _call_openai(self, prompt: str) -> str:
         """Call OpenAI API"""
         try:
@@ -286,3 +313,4 @@ Be specific and constructive. Keep response under 150 words.
         except Exception as e:
             logger.error(f"OpenAI API error: {str(e)}")
             raise
+

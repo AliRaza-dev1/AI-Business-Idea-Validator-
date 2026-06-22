@@ -1,0 +1,43 @@
+You are a specialized SWOT Generator. Your task is to derive a real, non-generic SWOT Analysis based on the business idea context and the previous analytical findings.
+
+Business Idea details:
+{idea_context}
+
+Analytical Findings from Agents:
+{agent_findings}
+
+Please generate Strengths, Weaknesses, Opportunities, and Threats, where each bullet point lists the specific retrieved framework source (e.g. Lean Startup, Porter's Five Forces, etc.) that influenced it.
+
+Output JSON format:
+{{
+  "strengths": [
+    {{
+      "text": "<strength point>",
+      "framework_source": "<framework name or 'SWOT Analysis'>"
+    }},
+    ...
+  ],
+  "weaknesses": [
+    {{
+      "text": "<weakness point>",
+      "framework_source": "<framework kname or 'Startup Failure Patterns'>"
+    }},
+    ...
+  ],
+  "opportunities": [
+    {{
+      "text": "<opportunity point>",
+      "framework_source": "<framework name or 'Market Research'>"
+    }},
+    ...
+  ],
+  "threats": [
+    {{
+      "text": "<threat point>",
+      "framework_source": "<framework name or 'Porter Five Forces'>"
+    }},
+    ...
+  ]
+}}
+
+Respond with ONLY the JSON object. Do not include markdown code block formatting or backticks.

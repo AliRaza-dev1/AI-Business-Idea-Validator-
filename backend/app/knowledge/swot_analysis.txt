@@ -1,0 +1,7 @@
+SWOT Analysis Framework:
+SWOT stands for Strengths, Weaknesses, Opportunities, and Threats.
+Strengths (Internal, positive): Attributes of the organization or project that give it an advantage over others. Examples include proprietary technology, specialized team expertise, strong brand reputation, or low cost structure.
+Weaknesses (Internal, negative): Attributes of the organization or project that place it at a disadvantage relative to others. Examples include lack of capital, weak differentiation, high customer acquisition costs, or lack of intellectual property.
+Opportunities (External, positive): Elements in the environment that the project could exploit to its advantage. Examples include emerging customer needs, market growth trends, changes in regulations favoring the business model, or weak existing competitors.
+Threats (External, negative): Elements in the environment that could cause trouble for the business. Examples include intensifying competition, economic downturns, rising supply chain costs, shifting consumer preferences, or restrictive regulations.
+Guidelines: When generating a SWOT, analyze actual data points from market and competitor agents, linking points to framework-derived insights.
